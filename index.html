@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>SheGlo - Glow From Within</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+      <style>
+          *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+                      --rose: #E8A0BF;
+                      --blush: #F5C6D0;
+                      --gold: #C9A96E;
+                      --cream: #FFF8F0;
+                      --dark: #2D2D2D;
+            --soft-white: #FEFBF6;
+                          --gradient-main: linear-gradient(135deg, #E8A0BF 0%, #F5C6D0 40%, #C9A96E 100%);
+              }
+
+                      body {
+                          font-family: 'Inter', sans-serif;
+            background: var(--soft-white);
+            color: var(--dark);
+            overflow-x: hidden;
+}
+
+        /* Header */
+        header {
+                      position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(254, 251, 246, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(232, 160, 191, 0.15);
+            transition: all 0.3s ease;
+}
+
+        .logo {
+                      font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+}
+
+        .header-links {
+                      display: flex;
+            gap: 1.5rem;
+            align-items: center;
+}
+
+        .header-links a {
+                      text-decoration: none;
+            color: var(--dark);
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            letter-spacing: 0.3px;
+}
+
+        .header-links a:hover { opacity: 1; }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+                      content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(232, 160, 191, 0.15) 0%, transparent 50%),
+                                      radial-gradient(ellipse at 70% 80%, rgba(201, 169, 110, 0.1) 0%, transparent 50%),
+                                      radial-gradient(ellipse at 50% 50%, rgba(245, 198, 208, 0.08) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+}
+
+        @keyframes float {
+                      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+}
+
+        .hero-content {
+                      position: relative;
+                      z-index: 1;
+            max-width: 800px;
+}
+
+        .hero-badge {
+                      display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(232, 160, 191, 0.12);
+            border: 1px solid rgba(232, 160, 191, 0.25);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+                          color: var(--rose);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+}
+
+        .hero h1 {
+                      font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+}
+
+        .hero h1 span {
+                      background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+}
+
+        .hero p {
+                      font-size: 1.15rem;
+            line-height: 1.8;
+            color: #666;
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+}
+
+        .cta-group {
+                      display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+}
+
+        .btn-primary {
+                      padding: 1rem 2.5rem;
+            background: var(--gradient-main);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 25px rgba(232, 160, 191, 0.35);
+            letter-spacing: 0.3px;
+}
+
+        .btn-primary:hover {
+                      transform: translateY(-2px);
+            box-shadow: 0 8px 35px rgba(232, 160, 191, 0.5);
+        }
+
+        .btn-secondary {
+                      padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--dark);
+            border: 1.5px solid rgba(45, 45, 45, 0.2);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+}
+
+        .btn-secondary:hover {
+                      border-color: var(--rose);
+            color: var(--rose);
+}
+
+        /* Features Section */
+        .features {
+                      padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+}
+
+        .section-label {
+                      text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+}
+
+        .section-title {
+                      text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 3.5rem;
+            color: var(--dark);
+}
+
+        .features-grid {
+                      display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            }
+
+        .feature-card {
+                      padding: 2.5rem;
+            border-radius: 20px;
+            background: white;
+            border: 1px solid rgba(232, 160, 191, 0.1);
+            transition: all 0.4s ease;
+}
+
+        .feature-card:hover {
+                      transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(232, 160, 191, 0.12);
+            border-color: rgba(232, 160, 191, 0.25);
+        }
+
+        .feature-icon {
+                      width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+}
+
+        .feature-card h3 {
+                      font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+}
+
+        .feature-card p {
+                      font-size: 0.9rem;
+            line-height: 1.7;
+            color: #888;
+            font-weight: 300;
+}
+
+        /* How It Works */
+        .how-it-works {
+                      padding: 6rem 2rem;
+            background: linear-gradient(180deg, rgba(232, 160, 191, 0.04) 0%, rgba(201, 169, 110, 0.04) 100%);
+}
+
+        .steps {
+                      max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+}
+
+        .step {
+                      display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+}
+
+        .step-number {
+                      flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+}
+
+        .step h3 {
+                      font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+}
+
+        .step p {
+                      font-size: 0.9rem;
+            line-height: 1.7;
+            color: #888;
+            font-weight: 300;
+}
+
+        /* CTA Section */
+        .cta-section {
+                      padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+}
+
+        .cta-section::before {
+                      content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(232, 160, 191, 0.08) 0%, transparent 70%);
+}
+
+        .cta-content {
+                          position: relative;
+            z-index: 1;
+}
+
+        .cta-section h2 {
+                      font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+}
+
+        .cta-section p {
+                      font-size: 1.05rem;
+            color: #888;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+}
+
+        .email-form {
+                      display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            max-width: 460px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+}
+
+        .email-form input {
+                      flex: 1;
+            min-width: 220px;
+            padding: 1rem 1.5rem;
+            border: 1.5px solid rgba(45, 45, 45, 0.12);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.3s ease;
+            background: white;
+}
+
+        .email-form input:focus {
+                      border-color: var(--rose);
+}
+
+        /* Footer */
+        footer {
+                      padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(232, 160, 191, 0.1);
+}
+
+        .footer-logo {
+                      font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+}
+
+        .footer-links {
+                      display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+}
+
+        .footer-links a {
+                      text-decoration: none;
+            color: #888;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+}
+
+        .footer-links a:hover { color: var(--rose); }
+
+        .footer-copy {
+                      font-size: 0.8rem;
+            color: #aaa;
+            }
+
+        /* Animations */
+        .fade-in {
+                      opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            .logo { font-size: 1.4rem; }
+            .header-links a { font-size: 0.75rem; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .step { flex-direction: column; gap: 1rem; }
+}
+    </style>
+      </head>
+      <body>
+
+          <header>
+              <div class="logo">SheGlo</div>
+              <div class="header-links">
+                  <a href="privacy.html">Privacy Policy</a>
+                  <a href="terms.html">Terms of Service</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <div class="hero-badge">Coming Soon</div>
+            <h1>Your Journey to <span>Radiant Confidence</span></h1>
+            <p>SheGlo is the all-in-one beauty and wellness app designed to help you build personalized skincare routines, track your glow-up, and feel your most confident self every day.</p>
+                  <div class="cta-group">
+                      <a href="#notify" class="btn-primary">Get Early Access</a>
+                      <a href="#features" class="btn-secondary">Learn More</a>
+                  </div>
+              </div>
+          </section>
+
+          <section class="features" id="features">
+              <div class="section-label fade-in">Features</div>
+              <h2 class="section-title fade-in">Everything You Need to <em>Glow</em></h2>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">&#10024;</div>
+                <h3>Personalized Routines</h3>
+                      <p>Get custom skincare and wellness routines tailored to your unique skin type, goals, and lifestyle. Updated as your needs evolve.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">&#128197;</div>
+                <h3>Progress Tracking</h3>
+                <p>Log your daily routines, track product usage, and watch your transformation unfold with visual progress timelines.</p>
+            </div>
+            <div class="feature-card fade-in">
+                      <div class="feature-icon">&#128161;</div>
+                      <h3>Expert Insights</h3>
+                      <p>Access curated tips from dermatologists and beauty experts. Learn what ingredients work best for your skin and why.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="section-label fade-in">How It Works</div>
+        <h2 class="section-title fade-in">Simple Steps to Your Best Skin</h2>
+              <div class="steps">
+                  <div class="step fade-in">
+                      <div class="step-number">1</div>
+                      <div>
+                          <h3>Take the Skin Quiz</h3>
+                          <p>Answer a few quick questions about your skin type, concerns, and beauty goals so we can personalize your experience.</p>
+                </div>
+            </div>
+            <div class="step fade-in">
+                <div class="step-number">2</div>
+                <div>
+                    <h3>Get Your Custom Plan</h3>
+                    <p>Receive a tailored daily and nightly routine complete with product recommendations and application techniques.</p>
+                </div>
+            </div>
+                  <div class="step fade-in">
+                      <div class="step-number">3</div>
+                      <div>
+                          <h3>Track Your Glow-Up</h3>
+                          <p>Log your progress, adjust your routine as needed, and celebrate your skin transformation journey with the SheGlo community.</p>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+          <section class="cta-section" id="notify">
+              <div class="cta-content fade-in">
+                  <h2>Ready to <span style="background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Glow</span>?</h2>
+            <p>Join the waitlist and be the first to experience SheGlo when we launch.</p>
+            <form class="email-form" onsubmit="event.preventDefault(); this.querySelector('input').value='Thank you! You are on the list.'; this.querySelector('input').disabled=true; this.querySelector('button').style.display='none';">
+                <input type="email" placeholder="Enter your email" required>
+                      <button type="submit" class="btn-primary">Join Waitlist</button>
+                  </form>
+              </div>
+          </section>
+
+          <footer>
+              <div class="footer-logo">SheGlo</div>
+              <div class="footer-links">
+                  <a href="privacy.html">Privacy Policy</a>
+                  <a href="terms.html">Terms of Service</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 SheGlo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+      </body>
+      </html>
