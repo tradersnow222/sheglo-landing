@@ -1,545 +1,744 @@
 <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>SheGlo - Glow From Within</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-      <style>
-          *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sheglo - glow from within</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        :root {
-                      --rose: #E8A0BF;
-                      --blush: #F5C6D0;
-                      --gold: #C9A96E;
-                      --cream: #FFF8F0;
-                      --dark: #2D2D2D;
-            --soft-white: #FEFBF6;
-                          --gradient-main: linear-gradient(135deg, #E8A0BF 0%, #F5C6D0 40%, #C9A96E 100%);
-              }
+    :root {
+      --hot-pink: #E03E79;
+      --coral-orange: #F4845F;
+      --deep-plum: #6B2D5B;
+      --golden-yellow: #F2C94C;
+      --soft-lavender: #D5A6E6;
+      --warm-white: #FFF8F5;
+      --card-white: #FFFFFF;
+      --text-primary: #3C1E37;
+      --text-secondary: rgba(60, 30, 55, 0.6);
+      --gradient-sunset: linear-gradient(180deg, #F4845F 0%, #E03E79 50%, #6B2D5B 100%);
+      --gradient-cta: linear-gradient(90deg, #F06482, #E03E79);
+      --card-shadow: 0 4px 12px rgba(107, 45, 91, 0.08);
+      --selection-border: rgba(60, 30, 55, 0.1);
+    }
 
-                      body {
-                          font-family: 'Inter', sans-serif;
-            background: var(--soft-white);
-            color: var(--dark);
-            overflow-x: hidden;
-}
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-transform: lowercase;
+    }
 
-        /* Header */
-        header {
-                      position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(254, 251, 246, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(232, 160, 191, 0.15);
-            transition: all 0.3s ease;
-}
+    h1, h2, h3, h4, h5, h6, button, a, label, span, p, div {
+      text-transform: lowercase;
+    }
 
-        .logo {
-                      font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-}
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 248, 245, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(107, 45, 91, 0.06);
+      transition: all 0.3s ease;
+    }
 
-        .header-links {
-                      display: flex;
-            gap: 1.5rem;
-            align-items: center;
-}
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #E03E79, #F4845F, #F2C94C, #D5A6E6);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+      letter-spacing: -0.5px;
+    }
 
-        .header-links a {
-                      text-decoration: none;
-            color: var(--dark);
-            font-size: 0.85rem;
-            font-weight: 500;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-            letter-spacing: 0.3px;
-}
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
 
-        .header-links a:hover { opacity: 1; }
+    .header-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
+    .header-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-        .hero::before {
-                      content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 30% 20%, rgba(232, 160, 191, 0.15) 0%, transparent 50%),
-                                      radial-gradient(ellipse at 70% 80%, rgba(201, 169, 110, 0.1) 0%, transparent 50%),
-                                      radial-gradient(ellipse at 50% 50%, rgba(245, 198, 208, 0.08) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-}
+    .header-links a:hover {
+      color: var(--hot-pink);
+    }
 
-        @keyframes float {
-                      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(1deg); }
-            66% { transform: translate(-20px, 20px) rotate(-1deg); }
-}
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+      background: var(--gradient-sunset);
+    }
 
-        .hero-content {
-                      position: relative;
-                      z-index: 1;
-            max-width: 800px;
-}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(244, 132, 95, 0.2) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(107, 45, 91, 0.15) 0%, transparent 50%);
+      animation: heroFloat 20s ease-in-out infinite;
+    }
 
-        .hero-badge {
-                      display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: rgba(232, 160, 191, 0.12);
-            border: 1px solid rgba(232, 160, 191, 0.25);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-                          color: var(--rose);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-}
+    @keyframes heroFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(20px, -20px) rotate(0.5deg); }
+      66% { transform: translate(-15px, 15px) rotate(-0.5deg); }
+    }
 
-        .hero h1 {
-                      font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-}
+    @keyframes heroPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.02); opacity: 0.95; }
+    }
 
-        .hero h1 span {
-                      background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-}
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      animation: heroPulse 6s ease-in-out infinite;
+    }
 
-        .hero p {
-                      font-size: 1.15rem;
-            line-height: 1.8;
-            color: #666;
-            max-width: 550px;
-            margin: 0 auto 2.5rem;
-            font-weight: 300;
-}
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+    }
 
-        .cta-group {
-                      display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-}
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      color: white;
+    }
 
-        .btn-primary {
-                      padding: 1rem 2.5rem;
-            background: var(--gradient-main);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 25px rgba(232, 160, 191, 0.35);
-            letter-spacing: 0.3px;
-}
+    .hero h1 .accent {
+      color: var(--golden-yellow);
+    }
 
-        .btn-primary:hover {
-                      transform: translateY(-2px);
-            box-shadow: 0 8px 35px rgba(232, 160, 191, 0.5);
-        }
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      font-weight: 400;
+    }
 
-        .btn-secondary {
-                      padding: 1rem 2.5rem;
-            background: transparent;
-            color: var(--dark);
-            border: 1.5px solid rgba(45, 45, 45, 0.2);
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-}
+    .cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        .btn-secondary:hover {
-                      border-color: var(--rose);
-            color: var(--rose);
-}
+    .btn-primary {
+      padding: 0 32px;
+      height: 56px;
+      background: var(--gradient-cta);
+      color: white;
+      border: none;
+      border-radius: 28px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(224, 62, 121, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-transform: lowercase;
+    }
 
-        /* Features Section */
-        .features {
-                      padding: 6rem 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-}
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(224, 62, 121, 0.45);
+    }
 
-        .section-label {
-                      text-align: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
-}
+    .btn-hero-primary {
+      padding: 0 32px;
+      height: 56px;
+      background: white;
+      color: var(--hot-pink);
+      border: none;
+      border-radius: 28px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-transform: lowercase;
+    }
 
-        .section-title {
-                      text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 600;
-            margin-bottom: 3.5rem;
-            color: var(--dark);
-}
+    .btn-hero-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
 
-        .features-grid {
-                      display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            }
+    .btn-secondary {
+      padding: 0 32px;
+      height: 56px;
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 28px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-transform: lowercase;
+    }
 
-        .feature-card {
-                      padding: 2.5rem;
-            border-radius: 20px;
-            background: white;
-            border: 1px solid rgba(232, 160, 191, 0.1);
-            transition: all 0.4s ease;
-}
+    .btn-secondary:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
 
-        .feature-card:hover {
-                      transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(232, 160, 191, 0.12);
-            border-color: rgba(232, 160, 191, 0.25);
-        }
+    .features {
+      padding: 80px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-        .feature-icon {
-                      width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            background: var(--gradient-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-}
+    .section-label {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--hot-pink);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
 
-        .feature-card h3 {
-                      font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-}
+    .section-title {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--text-primary);
+    }
 
-        .feature-card p {
-                      font-size: 0.9rem;
-            line-height: 1.7;
-            color: #888;
-            font-weight: 300;
-}
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
 
-        /* How It Works */
-        .how-it-works {
-                      padding: 6rem 2rem;
-            background: linear-gradient(180deg, rgba(232, 160, 191, 0.04) 0%, rgba(201, 169, 110, 0.04) 100%);
-}
+    .feature-card {
+      padding: 32px;
+      border-radius: 16px;
+      background: var(--card-white);
+      box-shadow: var(--card-shadow);
+      transition: all 0.4s ease;
+    }
 
-        .steps {
-                      max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-}
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(107, 45, 91, 0.12);
+    }
 
-        .step {
-                      display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-}
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(224, 62, 121, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+      color: var(--hot-pink);
+    }
 
-        .step-number {
-                      flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--gradient-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-}
+    .feature-card h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
 
-        .step h3 {
-                      font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-}
+    .feature-card p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
 
-        .step p {
-                      font-size: 0.9rem;
-            line-height: 1.7;
-            color: #888;
-            font-weight: 300;
-}
+    .how-it-works {
+      padding: 80px 24px;
+      background: var(--warm-white);
+    }
 
-        /* CTA Section */
-        .cta-section {
-                      padding: 8rem 2rem;
-            text-align: center;
-            position: relative;
-}
+    .steps {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
 
-        .cta-section::before {
-                      content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(232, 160, 191, 0.08) 0%, transparent 70%);
-}
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--card-white);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+    }
 
-        .cta-content {
-                          position: relative;
-            z-index: 1;
-}
+    .step:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(107, 45, 91, 0.1);
+    }
 
-        .cta-section h2 {
-                      font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1.5rem;
-}
+    .step-number {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gradient-cta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+    }
 
-        .cta-section p {
-                      font-size: 1.05rem;
-            color: #888;
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-}
+    .step h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
 
-        .email-form {
-                      display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            max-width: 460px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-}
+    .step p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
 
-        .email-form input {
-                      flex: 1;
-            min-width: 220px;
-            padding: 1rem 1.5rem;
-            border: 1.5px solid rgba(45, 45, 45, 0.12);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            transition: border-color 0.3s ease;
-            background: white;
-}
+    .progress-section {
+      padding: 60px 24px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-        .email-form input:focus {
-                      border-color: var(--rose);
-}
+    .progress-item { margin-bottom: 20px; }
 
-        /* Footer */
-        footer {
-                      padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(232, 160, 191, 0.1);
-}
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
 
-        .footer-logo {
-                      font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-}
+    .progress-bar-bg {
+      width: 100%;
+      height: 4px;
+      background: rgba(60, 30, 55, 0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
 
-        .footer-links {
-                      display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-}
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--hot-pink);
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(224, 62, 121, 0.4);
+      transition: width 1s ease;
+    }
 
-        .footer-links a {
-                      text-decoration: none;
-            color: #888;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-}
+    .stars { display: flex; gap: 2px; margin-bottom: 8px; }
+    .star { color: var(--hot-pink); font-size: 18px; }
+    .star.empty { color: rgba(60, 30, 55, 0.15); }
 
-        .footer-links a:hover { color: var(--rose); }
+    .cta-section {
+      padding: 80px 24px;
+      text-align: center;
+      position: relative;
+      background: var(--gradient-sunset);
+    }
 
-        .footer-copy {
-                      font-size: 0.8rem;
-            color: #aaa;
-            }
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
-        /* Animations */
-        .fade-in {
-                      opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-}
+    .cta-section h2 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: white;
+    }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .cta-section p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            header { padding: 1rem 1.5rem; }
-            .logo { font-size: 1.4rem; }
-            .header-links a { font-size: 0.75rem; }
-            .hero { padding: 7rem 1.5rem 3rem; }
-            .features-grid { grid-template-columns: 1fr; }
-            .step { flex-direction: column; gap: 1rem; }
-}
-    </style>
-      </head>
-      <body>
+    .email-form {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      max-width: 440px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
 
-          <header>
-              <div class="logo">SheGlo</div>
-              <div class="header-links">
-                  <a href="privacy.html">Privacy Policy</a>
-                  <a href="terms.html">Terms of Service</a>
+    .email-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0 20px;
+      height: 56px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 28px;
+      font-size: 18px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      outline: none;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      backdrop-filter: blur(10px);
+      text-transform: lowercase;
+    }
+
+    .email-form input::placeholder { color: rgba(255, 255, 255, 0.5); }
+    .email-form input:focus { border-color: white; background: rgba(255, 255, 255, 0.15); }
+    .email-form .btn-hero-primary { min-width: fit-content; }
+
+    .social-proof {
+      padding: 60px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--card-white);
+      box-shadow: var(--card-shadow);
+    }
+
+    .testimonial-card .stars { margin-bottom: 12px; }
+
+    .testimonial-card p {
+      font-size: 18px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .testimonial-card .author {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .badge-golden {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(242, 201, 76, 0.15);
+      color: #B8860B;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 28px;
+    }
+
+    footer {
+      padding: 40px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(107, 45, 91, 0.06);
+      background: var(--warm-white);
+    }
+
+    .footer-logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #E03E79, #F4845F, #F2C94C, #D5A6E6);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover { color: var(--hot-pink); }
+
+    .footer-copy {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 12px 24px; }
+      .logo { font-size: 1.3rem; }
+      .hero { padding: 100px 24px 60px; }
+      .hero h1 { font-size: 26px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .step { flex-direction: column; gap: 12px; }
+      .cta-group { flex-direction: column; align-items: center; }
+      .btn-hero-primary, .btn-secondary, .btn-primary { width: 100%; }
+      .email-form { flex-direction: column; }
+      .email-form input, .email-form .btn-hero-primary { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">sheglo</div>
+    <div class="header-links">
+      <a href="privacy.html">privacy policy</a>
+      <a href="terms.html">terms of service</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content fade-in">
+      <div class="hero-badge">✨ coming soon</div>
+      <h1>your journey to <span class="accent">radiant confidence</span></h1>
+      <p>sheglo is the all-in-one beauty and wellness app designed to help you build personalized skincare routines, track your glow-up, and feel your most confident self every day.</p>
+      <div class="cta-group">
+        <a href="#notify" class="btn-hero-primary">get early access</a>
+        <a href="#features" class="btn-secondary">learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="section-label fade-in">✨ features</div>
+    <h2 class="section-title fade-in">everything you need to glow</h2>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon">✨</div>
+        <h3>personalized routines</h3>
+        <p>get custom skincare and wellness routines tailored to your unique skin type, goals, and lifestyle. updated as your needs evolve.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">📈</div>
+        <h3>progress tracking</h3>
+        <p>log your daily routines, track product usage, and watch your transformation unfold with visual progress timelines.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">💡</div>
+        <h3>expert insights</h3>
+        <p>access curated tips from dermatologists and beauty experts. learn what ingredients work best for your skin and why.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-proof">
+    <div class="section-label fade-in">💖 loved by thousands</div>
+    <h2 class="section-title fade-in">what our community says</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content fade-in">
-            <div class="hero-badge">Coming Soon</div>
-            <h1>Your Journey to <span>Radiant Confidence</span></h1>
-            <p>SheGlo is the all-in-one beauty and wellness app designed to help you build personalized skincare routines, track your glow-up, and feel your most confident self every day.</p>
-                  <div class="cta-group">
-                      <a href="#notify" class="btn-primary">Get Early Access</a>
-                      <a href="#features" class="btn-secondary">Learn More</a>
-                  </div>
-              </div>
-          </section>
-
-          <section class="features" id="features">
-              <div class="section-label fade-in">Features</div>
-              <h2 class="section-title fade-in">Everything You Need to <em>Glow</em></h2>
-        <div class="features-grid">
-            <div class="feature-card fade-in">
-                <div class="feature-icon">&#10024;</div>
-                <h3>Personalized Routines</h3>
-                      <p>Get custom skincare and wellness routines tailored to your unique skin type, goals, and lifestyle. Updated as your needs evolve.</p>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-icon">&#128197;</div>
-                <h3>Progress Tracking</h3>
-                <p>Log your daily routines, track product usage, and watch your transformation unfold with visual progress timelines.</p>
-            </div>
-            <div class="feature-card fade-in">
-                      <div class="feature-icon">&#128161;</div>
-                      <h3>Expert Insights</h3>
-                      <p>Access curated tips from dermatologists and beauty experts. Learn what ingredients work best for your skin and why.</p>
-            </div>
+        <p>"this app completely changed my skincare game. i finally understand what my skin needs!"</p>
+        <div class="author">— sarah m. <span class="badge-golden">✨ early adopter</span></div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
-    </section>
-
-    <section class="how-it-works">
-        <div class="section-label fade-in">How It Works</div>
-        <h2 class="section-title fade-in">Simple Steps to Your Best Skin</h2>
-              <div class="steps">
-                  <div class="step fade-in">
-                      <div class="step-number">1</div>
-                      <div>
-                          <h3>Take the Skin Quiz</h3>
-                          <p>Answer a few quick questions about your skin type, concerns, and beauty goals so we can personalize your experience.</p>
-                </div>
-            </div>
-            <div class="step fade-in">
-                <div class="step-number">2</div>
-                <div>
-                    <h3>Get Your Custom Plan</h3>
-                    <p>Receive a tailored daily and nightly routine complete with product recommendations and application techniques.</p>
-                </div>
-            </div>
-                  <div class="step fade-in">
-                      <div class="step-number">3</div>
-                      <div>
-                          <h3>Track Your Glow-Up</h3>
-                          <p>Log your progress, adjust your routine as needed, and celebrate your skin transformation journey with the SheGlo community.</p>
-                      </div>
-                  </div>
-              </div>
-          </section>
-
-          <section class="cta-section" id="notify">
-              <div class="cta-content fade-in">
-                  <h2>Ready to <span style="background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Glow</span>?</h2>
-            <p>Join the waitlist and be the first to experience SheGlo when we launch.</p>
-            <form class="email-form" onsubmit="event.preventDefault(); this.querySelector('input').value='Thank you! You are on the list.'; this.querySelector('input').disabled=true; this.querySelector('button').style.display='none';">
-                <input type="email" placeholder="Enter your email" required>
-                      <button type="submit" class="btn-primary">Join Waitlist</button>
-                  </form>
-              </div>
-          </section>
-
-          <footer>
-              <div class="footer-logo">SheGlo</div>
-              <div class="footer-links">
-                  <a href="privacy.html">Privacy Policy</a>
-                  <a href="terms.html">Terms of Service</a>
+        <p>"love the personalized routines. it feels like having a skincare expert in my pocket!"</p>
+        <div class="author">— emma l.</div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
         </div>
-        <p class="footer-copy">&copy; 2026 SheGlo. All rights reserved.</p>
-    </footer>
+        <p>"the progress tracking is so motivating. i can actually see the difference week by week."</p>
+        <div class="author">— jess k.</div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-}
-});
-}, { threshold: 0.1 });
+  <section class="how-it-works">
+    <div class="section-label fade-in">🚀 how it works</div>
+    <h2 class="section-title fade-in">simple steps to your best skin</h2>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-number">1</div>
+        <div>
+          <h3>take the skin quiz 📝</h3>
+          <p>answer a few quick questions about your skin type, concerns, and beauty goals so we can personalize your experience.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">2</div>
+        <div>
+          <h3>get your custom plan ✨</h3>
+          <p>receive a tailored daily and nightly routine complete with product recommendations and application techniques.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">3</div>
+        <div>
+          <h3>track your glow-up 🌟</h3>
+          <p>log your progress, adjust your routine as needed, and celebrate your skin transformation journey with the sheglo community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
+  <section class="progress-section">
+    <div class="section-label fade-in">📊 your glow progress</div>
+    <h2 class="section-title fade-in">track every step</h2>
+    <div class="progress-item fade-in">
+      <div class="progress-label"><span>hydration</span><span>85%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%"></div></div>
+    </div>
+    <div class="progress-item fade-in">
+      <div class="progress-label"><span>consistency</span><span>72%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%"></div></div>
+    </div>
+    <div class="progress-item fade-in">
+      <div class="progress-label"><span>skin clarity</span><span>91%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 91%"></div></div>
+    </div>
+  </section>
 
-      </body>
-      </html>
+  <section class="cta-section" id="notify">
+    <div class="cta-content fade-in">
+      <h2>ready to glow? ✨</h2>
+      <p>join the waitlist and be the first to experience sheglo when we launch.</p>
+      <form class="email-form" onsubmit="event.preventDefault(); this.querySelector('input').value='thank you! you\'re on the list 🌟'; this.querySelector('input').disabled=true; this.querySelector('button').style.display='none';">
+        <input type="email" placeholder="enter your email" required>
+        <button type="submit" class="btn-hero-primary">join waitlist</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">sheglo</div>
+    <div class="footer-links">
+      <a href="privacy.html">privacy policy</a>
+      <a href="terms.html">terms of service</a>
+    </div>
+    <p class="footer-copy">© 2026 sheglo. all rights reserved.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
