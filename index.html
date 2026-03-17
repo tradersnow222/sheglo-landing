@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sheglo - glow from within</title>
+  <title>sheglo — glow from within</title>
+  <meta name="description" content="replace your morning doom-scroll with a 1-minute self-love ritual. mood check-in, confidence boost, daily affirmation. download free on ios.">
+  <meta property="og:title" content="sheglo — glow from within">
+  <meta property="og:description" content="the daily self-love app for women. 1 minute. every morning. before you scroll.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sheglo.app">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --hot-pink: #E03E79;
@@ -27,7 +28,6 @@
       --gradient-sunset: linear-gradient(180deg, #F4845F 0%, #E03E79 50%, #6B2D5B 100%);
       --gradient-cta: linear-gradient(90deg, #F06482, #E03E79);
       --card-shadow: 0 4px 12px rgba(107, 45, 91, 0.08);
-      --selection-border: rgba(60, 30, 55, 0.1);
     }
 
     body {
@@ -41,28 +41,26 @@
       text-transform: lowercase;
     }
 
-    h1, h2, h3, h4, h5, h6, button, a, label, span, p, div {
-      text-transform: lowercase;
-    }
+    h1, h2, h3, h4, h5, h6, button, a, label, span, p, div { text-transform: lowercase; }
 
+    /* header */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      padding: 1rem 24px;
+      padding: 14px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 248, 245, 0.9);
+      background: rgba(255, 248, 245, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(107, 45, 91, 0.06);
-      transition: all 0.3s ease;
     }
 
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 700;
       background: linear-gradient(90deg, #E03E79, #F4845F, #F2C94C, #D5A6E6);
       background-size: 300% 100%;
@@ -70,7 +68,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: shimmer 4s ease-in-out infinite;
-      letter-spacing: -0.5px;
     }
 
     @keyframes shimmer {
@@ -78,12 +75,7 @@
       50% { background-position: 100% 50%; }
     }
 
-    .header-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
+    .header-links { display: flex; gap: 20px; align-items: center; }
     .header-links a {
       text-decoration: none;
       color: var(--text-secondary);
@@ -91,11 +83,23 @@
       font-weight: 500;
       transition: color 0.3s ease;
     }
+    .header-links a:hover { color: var(--hot-pink); }
 
-    .header-links a:hover {
-      color: var(--hot-pink);
+    .header-cta {
+      padding: 10px 22px;
+      background: var(--gradient-cta);
+      color: white !important;
+      -webkit-text-fill-color: white !important;
+      border-radius: 28px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 12px rgba(224, 62, 121, 0.25);
     }
+    .header-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(224, 62, 121, 0.35); }
 
+    /* hero */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -103,38 +107,20 @@
       justify-content: center;
       text-align: center;
       padding: 120px 24px 80px;
+      background: var(--gradient-sunset);
       position: relative;
       overflow: hidden;
-      background: var(--gradient-sunset);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(ellipse at 30% 20%, rgba(244, 132, 95, 0.2) 0%, transparent 50%),
-                  radial-gradient(ellipse at 70% 80%, rgba(107, 45, 91, 0.15) 0%, transparent 50%);
-      animation: heroFloat 20s ease-in-out infinite;
-    }
-
-    @keyframes heroFloat {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(20px, -20px) rotate(0.5deg); }
-      66% { transform: translate(-15px, 15px) rotate(-0.5deg); }
     }
 
     @keyframes heroPulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.02); opacity: 0.95; }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.01); }
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 680px;
+      max-width: 600px;
       animation: heroPulse 6s ease-in-out infinite;
     }
 
@@ -147,116 +133,94 @@
       font-size: 14px;
       font-weight: 600;
       color: white;
-      letter-spacing: 0.5px;
       margin-bottom: 24px;
       backdrop-filter: blur(10px);
     }
 
     .hero h1 {
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 700;
-      line-height: 1.3;
+      line-height: 1.25;
       margin-bottom: 16px;
       color: white;
     }
 
-    .hero h1 .accent {
-      color: var(--golden-yellow);
-    }
+    .hero h1 .accent { color: var(--golden-yellow); }
 
     .hero p {
       font-size: 18px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 520px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.88);
       margin: 0 auto 32px;
       font-weight: 400;
     }
 
-    .cta-group {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      padding: 0 32px;
-      height: 56px;
-      background: var(--gradient-cta);
-      color: white;
-      border: none;
-      border-radius: 28px;
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(224, 62, 121, 0.3);
+    .hero-cta {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      text-transform: lowercase;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(224, 62, 121, 0.45);
-    }
-
-    .btn-hero-primary {
-      padding: 0 32px;
+      gap: 12px;
+      padding: 0 36px;
       height: 56px;
       background: white;
       color: var(--hot-pink);
       border: none;
       border-radius: 28px;
       font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
+      font-weight: 700;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
       font-family: 'Plus Jakarta Sans', sans-serif;
       text-transform: lowercase;
     }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+    .hero-cta img { height: 22px; }
 
-    .btn-hero-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    .hero-sub {
+      margin-top: 14px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
     }
 
-    .btn-secondary {
-      padding: 0 32px;
-      height: 56px;
-      background: transparent;
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      border-radius: 28px;
-      font-size: 18px;
+    /* social proof strip */
+    .social-strip {
+      padding: 28px 24px;
+      text-align: center;
+      background: var(--warm-white);
+      border-bottom: 1px solid rgba(107,45,91,0.05);
+    }
+    .social-strip-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .social-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .social-stat .num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--hot-pink);
+    }
+    .social-stat .label {
+      font-size: 13px;
+      color: var(--text-secondary);
       font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      text-transform: lowercase;
     }
+    .social-stars { color: var(--hot-pink); font-size: 18px; letter-spacing: 2px; }
 
-    .btn-secondary:hover {
-      border-color: white;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .features {
+    /* how it works */
+    .how-section {
       padding: 80px 24px;
-      max-width: 1100px;
+      max-width: 640px;
       margin: 0 auto;
     }
 
@@ -266,10 +230,6 @@
       font-weight: 600;
       color: var(--hot-pink);
       margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
     }
 
     .section-title {
@@ -280,260 +240,145 @@
       color: var(--text-primary);
     }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .feature-card {
-      padding: 32px;
-      border-radius: 16px;
-      background: var(--card-white);
-      box-shadow: var(--card-shadow);
-      transition: all 0.4s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(107, 45, 91, 0.12);
-    }
-
-    .feature-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: rgba(224, 62, 121, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      font-size: 1.5rem;
-      color: var(--hot-pink);
-    }
-
-    .feature-card h3 {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-
-    .feature-card p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: var(--text-secondary);
-      font-weight: 400;
-    }
-
-    .how-it-works {
-      padding: 80px 24px;
-      background: var(--warm-white);
-    }
-
-    .steps {
-      max-width: 700px;
-      margin: 0 auto;
+    .glow-steps {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 16px;
     }
 
-    .step {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      background: var(--card-white);
-      padding: 24px;
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
-    }
-
-    .step:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(107, 45, 91, 0.1);
-    }
-
-    .step-number {
-      flex-shrink: 0;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--gradient-cta);
+    .glow-step {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 18px;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--card-white);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+    .glow-step:hover { transform: translateY(-2px); }
+
+    .glow-step .emoji {
+      font-size: 32px;
+      flex-shrink: 0;
+      width: 48px;
+      text-align: center;
     }
 
-    .step h3 {
-      font-size: 22px;
+    .glow-step h3 {
+      font-size: 20px;
       font-weight: 600;
-      margin-bottom: 4px;
       color: var(--text-primary);
+      margin-bottom: 2px;
     }
-
-    .step p {
-      font-size: 18px;
-      line-height: 1.6;
+    .glow-step p {
+      font-size: 15px;
       color: var(--text-secondary);
       font-weight: 400;
+      line-height: 1.4;
     }
 
-    .progress-section {
+    .step-time {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .step-time strong { color: var(--hot-pink); font-weight: 700; }
+
+    /* features strip */
+    .features-strip {
       padding: 60px 24px;
+      background: var(--warm-white);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
       max-width: 700px;
       margin: 0 auto;
     }
-
-    .progress-item { margin-bottom: 20px; }
-
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    .progress-bar-bg {
-      width: 100%;
-      height: 4px;
-      background: rgba(60, 30, 55, 0.08);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      background: var(--hot-pink);
-      border-radius: 2px;
-      box-shadow: 0 0 8px rgba(224, 62, 121, 0.4);
-      transition: width 1s ease;
-    }
-
-    .stars { display: flex; gap: 2px; margin-bottom: 8px; }
-    .star { color: var(--hot-pink); font-size: 18px; }
-    .star.empty { color: rgba(60, 30, 55, 0.15); }
-
-    .cta-section {
-      padding: 80px 24px;
+    .feature-pill {
       text-align: center;
-      position: relative;
-      background: var(--gradient-sunset);
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .cta-section h2 {
-      font-size: 30px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: white;
-    }
-
-    .cta-section p {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 32px;
-      font-weight: 400;
-    }
-
-    .email-form {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      max-width: 440px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-
-    .email-form input {
-      flex: 1;
-      min-width: 200px;
-      padding: 0 20px;
-      height: 56px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 28px;
-      font-size: 18px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      outline: none;
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      backdrop-filter: blur(10px);
-      text-transform: lowercase;
-    }
-
-    .email-form input::placeholder { color: rgba(255, 255, 255, 0.5); }
-    .email-form input:focus { border-color: white; background: rgba(255, 255, 255, 0.15); }
-    .email-form .btn-hero-primary { min-width: fit-content; }
-
-    .social-proof {
-      padding: 60px 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .testimonial-card {
-      padding: 24px;
-      border-radius: 16px;
+      padding: 20px 12px;
       background: var(--card-white);
+      border-radius: 16px;
       box-shadow: var(--card-shadow);
     }
-
-    .testimonial-card .stars { margin-bottom: 12px; }
-
-    .testimonial-card p {
-      font-size: 18px;
+    .feature-pill .emoji { font-size: 28px; margin-bottom: 8px; }
+    .feature-pill .name {
+      font-size: 14px;
+      font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 12px;
-      font-weight: 400;
+    }
+
+    /* reviews */
+    .reviews-section {
+      padding: 60px 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .review-card {
+      padding: 24px;
+      background: var(--card-white);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+    }
+    .review-stars { color: var(--hot-pink); font-size: 16px; margin-bottom: 10px; letter-spacing: 1px; }
+    .review-card .quote {
+      font-size: 16px;
+      color: var(--text-primary);
       line-height: 1.5;
+      margin-bottom: 10px;
       font-style: italic;
     }
-
-    .testimonial-card .author {
-      font-size: 14px;
+    .review-card .author {
+      font-size: 13px;
       color: var(--text-secondary);
       font-weight: 600;
-      font-style: normal;
     }
 
-    .badge-golden {
-      display: inline-block;
-      padding: 4px 12px;
-      background: rgba(242, 201, 76, 0.15);
-      color: #B8860B;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 28px;
-    }
-
-    footer {
-      padding: 40px 24px;
+    /* final cta */
+    .final-cta {
+      padding: 80px 24px;
       text-align: center;
-      border-top: 1px solid rgba(107, 45, 91, 0.06);
+      background: var(--gradient-sunset);
+    }
+    .final-cta-inner {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .final-cta h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+    }
+    .final-cta p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 32px;
+    }
+    .final-cta .hero-cta { margin-bottom: 12px; }
+    .final-cta .hero-sub { color: rgba(255,255,255,0.5); }
+
+    /* footer */
+    footer {
+      padding: 32px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(107,45,91,0.06);
       background: var(--warm-white);
     }
-
     .footer-logo {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 700;
       background: linear-gradient(90deg, #E03E79, #F4845F, #F2C94C, #D5A6E6);
       background-size: 300% 100%;
@@ -541,55 +386,33 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: shimmer 4s ease-in-out infinite;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 16px;
-    }
-
-    .footer-links a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
+    .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; }
+    .footer-links a { text-decoration: none; color: var(--text-secondary); font-size: 13px; font-weight: 500; transition: color 0.3s; }
     .footer-links a:hover { color: var(--hot-pink); }
+    .footer-copy { font-size: 13px; color: var(--text-secondary); }
 
-    .footer-copy {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
+    /* animations */
     .fade-in {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    /* responsive */
     @media (max-width: 768px) {
-      header { padding: 12px 24px; }
-      .logo { font-size: 1.3rem; }
+      .hero h1 { font-size: 27px; }
       .hero { padding: 100px 24px 60px; }
-      .hero h1 { font-size: 26px; }
-      .features-grid { grid-template-columns: 1fr; }
-      .testimonial-grid { grid-template-columns: 1fr; }
-      .step { flex-direction: column; gap: 12px; }
-      .cta-group { flex-direction: column; align-items: center; }
-      .btn-hero-primary, .btn-secondary, .btn-primary { width: 100%; }
-      .email-form { flex-direction: column; }
-      .email-form input, .email-form .btn-hero-primary { width: 100%; }
+      .social-strip-inner { gap: 20px; }
+      .social-stat .num { font-size: 22px; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
     }
+
+    /* apple button svg style */
+    .apple-icon { height: 20px; margin-right: 2px; vertical-align: middle; position: relative; top: -1px; }
   </style>
 </head>
 <body>
@@ -597,126 +420,133 @@
   <header>
     <div class="logo">sheglo</div>
     <div class="header-links">
-      <a href="privacy.html">privacy policy</a>
-      <a href="terms.html">terms of service</a>
+      <a href="privacy.html">privacy</a>
+      <a href="terms.html">terms</a>
+      <a href="#" class="header-cta">🌸 download free</a>
     </div>
   </header>
 
+  <!-- hero -->
   <section class="hero">
     <div class="hero-content fade-in">
-      <div class="hero-badge">✨ coming soon</div>
-      <h1>your journey to <span class="accent">radiant confidence</span></h1>
-      <p>sheglo is the all-in-one beauty and wellness app designed to help you build personalized skincare routines, track your glow-up, and feel your most confident self every day.</p>
-      <div class="cta-group">
-        <a href="#notify" class="btn-hero-primary">get early access</a>
-        <a href="#features" class="btn-secondary">learn more</a>
+      <div class="hero-badge">✨ 1 minute. every morning. before you scroll.</div>
+      <h1>replace your doom-scroll with a <span class="accent">daily self-love ritual</span></h1>
+      <p>sheglo is the ios app that helps women start every day with a mood check-in, a confidence boost, and a personalized affirmation — in under 60 seconds.</p>
+      <a href="#" class="hero-cta"><svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> download on the app store</a>
+      <div class="hero-sub">free to download · ios 17+</div>
+    </div>
+  </section>
+
+  <!-- social proof strip -->
+  <section class="social-strip fade-in">
+    <div class="social-strip-inner">
+      <div class="social-stat">
+        <div class="social-stars">★★★★★</div>
+        <div class="label">4.9 on the app store</div>
+      </div>
+      <div class="social-stat">
+        <div class="num">10k+</div>
+        <div class="label">daily glows completed</div>
+      </div>
+      <div class="social-stat">
+        <div class="num">60s</div>
+        <div class="label">is all it takes</div>
       </div>
     </div>
   </section>
 
-  <section class="features" id="features">
-    <div class="section-label fade-in">✨ features</div>
-    <h2 class="section-title fade-in">everything you need to glow</h2>
+  <!-- how it works -->
+  <section class="how-section">
+    <div class="section-label fade-in">🌟 your daily glow</div>
+    <h2 class="section-title fade-in">3 steps. 1 minute. every morning.</h2>
+    <div class="glow-steps">
+      <div class="glow-step fade-in">
+        <div class="emoji">😊</div>
+        <div>
+          <h3>mood check-in</h3>
+          <p>slide from 😢 to 🤩 — how are you really feeling today?</p>
+        </div>
+      </div>
+      <div class="glow-step fade-in">
+        <div class="emoji">🔥</div>
+        <div>
+          <h3>confidence boost</h3>
+          <p>rate your energy from 🥀 drained to 🔥 unstoppable</p>
+        </div>
+      </div>
+      <div class="glow-step fade-in">
+        <div class="emoji">🌸</div>
+        <div>
+          <h3>read your affirmation</h3>
+          <p>a personalized affirmation from 90+ cards matched to your style. say it aloud. feel it.</p>
+        </div>
+      </div>
+    </div>
+    <div class="step-time fade-in">✨ that's it. <strong>your apps unlock</strong> and your day begins with love.</div>
+  </section>
+
+  <!-- feature pills -->
+  <section class="features-strip">
+    <div class="section-label fade-in">💖 what's inside</div>
+    <h2 class="section-title fade-in">more than just affirmations</h2>
     <div class="features-grid">
-      <div class="feature-card fade-in">
-        <div class="feature-icon">✨</div>
-        <h3>personalized routines</h3>
-        <p>get custom skincare and wellness routines tailored to your unique skin type, goals, and lifestyle. updated as your needs evolve.</p>
+      <div class="feature-pill fade-in">
+        <div class="emoji">🔥</div>
+        <div class="name">daily streaks</div>
       </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">📈</div>
-        <h3>progress tracking</h3>
-        <p>log your daily routines, track product usage, and watch your transformation unfold with visual progress timelines.</p>
+      <div class="feature-pill fade-in">
+        <div class="emoji">📓</div>
+        <div class="name">glow journal</div>
       </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">💡</div>
-        <h3>expert insights</h3>
-        <p>access curated tips from dermatologists and beauty experts. learn what ingredients work best for your skin and why.</p>
+      <div class="feature-pill fade-in">
+        <div class="emoji">📊</div>
+        <div class="name">mood tracking</div>
       </div>
-    </div>
-  </section>
-
-  <section class="social-proof">
-    <div class="section-label fade-in">💖 loved by thousands</div>
-    <h2 class="section-title fade-in">what our community says</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card fade-in">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p>"this app completely changed my skincare game. i finally understand what my skin needs!"</p>
-        <div class="author">— sarah m. <span class="badge-golden">✨ early adopter</span></div>
+      <div class="feature-pill fade-in">
+        <div class="emoji">🔒</div>
+        <div class="name">screen time lock</div>
       </div>
-      <div class="testimonial-card fade-in">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p>"love the personalized routines. it feels like having a skincare expert in my pocket!"</p>
-        <div class="author">— emma l.</div>
+      <div class="feature-pill fade-in">
+        <div class="emoji">🎨</div>
+        <div class="name">5 affirmation styles</div>
       </div>
-      <div class="testimonial-card fade-in">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
-        </div>
-        <p>"the progress tracking is so motivating. i can actually see the difference week by week."</p>
-        <div class="author">— jess k.</div>
+      <div class="feature-pill fade-in">
+        <div class="emoji">🎉</div>
+        <div class="name">confetti celebrations</div>
       </div>
     </div>
   </section>
 
-  <section class="how-it-works">
-    <div class="section-label fade-in">🚀 how it works</div>
-    <h2 class="section-title fade-in">simple steps to your best skin</h2>
-    <div class="steps">
-      <div class="step fade-in">
-        <div class="step-number">1</div>
-        <div>
-          <h3>take the skin quiz 📝</h3>
-          <p>answer a few quick questions about your skin type, concerns, and beauty goals so we can personalize your experience.</p>
-        </div>
+  <!-- reviews -->
+  <section class="reviews-section">
+    <div class="section-label fade-in">💬 real women, real glow-ups</div>
+    <h2 class="section-title fade-in">why they love sheglo</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="quote">"i used to open instagram the second i woke up. now i do my glow first. it's only a minute but it changes my whole morning."</p>
+        <div class="author">— sarah, 24</div>
       </div>
-      <div class="step fade-in">
-        <div class="step-number">2</div>
-        <div>
-          <h3>get your custom plan ✨</h3>
-          <p>receive a tailored daily and nightly routine complete with product recommendations and application techniques.</p>
-        </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="quote">"the screen time lock is genius. i literally can't doom-scroll until i've told myself something kind. my therapist approves."</p>
+        <div class="author">— maya, 28</div>
       </div>
-      <div class="step fade-in">
-        <div class="step-number">3</div>
-        <div>
-          <h3>track your glow-up 🌟</h3>
-          <p>log your progress, adjust your routine as needed, and celebrate your skin transformation journey with the sheglo community.</p>
-        </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="quote">"i'm on a 47-day streak and my mood chart is actually going up. this app is so simple but so powerful."</p>
+        <div class="author">— jess, 22</div>
       </div>
     </div>
   </section>
 
-  <section class="progress-section">
-    <div class="section-label fade-in">📊 your glow progress</div>
-    <h2 class="section-title fade-in">track every step</h2>
-    <div class="progress-item fade-in">
-      <div class="progress-label"><span>hydration</span><span>85%</span></div>
-      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%"></div></div>
-    </div>
-    <div class="progress-item fade-in">
-      <div class="progress-label"><span>consistency</span><span>72%</span></div>
-      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%"></div></div>
-    </div>
-    <div class="progress-item fade-in">
-      <div class="progress-label"><span>skin clarity</span><span>91%</span></div>
-      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 91%"></div></div>
-    </div>
-  </section>
-
-  <section class="cta-section" id="notify">
-    <div class="cta-content fade-in">
-      <h2>ready to glow? ✨</h2>
-      <p>join the waitlist and be the first to experience sheglo when we launch.</p>
-      <form class="email-form" onsubmit="event.preventDefault(); this.querySelector('input').value='thank you! you\'re on the list 🌟'; this.querySelector('input').disabled=true; this.querySelector('button').style.display='none';">
-        <input type="email" placeholder="enter your email" required>
-        <button type="submit" class="btn-hero-primary">join waitlist</button>
-      </form>
+  <!-- final cta -->
+  <section class="final-cta">
+    <div class="final-cta-inner fade-in">
+      <h2>your morning glow starts now ✨</h2>
+      <p>1 minute of self-love before you scroll. every day. you deserve it.</p>
+      <a href="#" class="hero-cta"><svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> download free on ios</a>
+      <div class="hero-sub">free 3-day trial · then $39.99/year</div>
     </div>
   </section>
 
@@ -732,9 +562,7 @@
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
