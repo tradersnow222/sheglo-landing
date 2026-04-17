@@ -1,572 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sheglo — glow from within</title>
-  <meta name="description" content="replace your morning doom-scroll with a 1-minute self-love ritual. mood check-in, confidence boost, daily affirmation. download free on ios.">
-  <meta property="og:title" content="sheglo — glow from within">
-  <meta property="og:description" content="the daily self-love app for women. 1 minute. every morning. before you scroll.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sheglo.app">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>sheglo</title>
+  <meta name="description" content="do you have 1 minute for yourself?" />
+
+  <!-- OG / social -->
+  <meta property="og:title" content="sheglo" />
+  <meta property="og:description" content="do you have 1 minute for yourself?" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://sheglo.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="sheglo app" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="sheglo" />
+  <meta name="twitter:description" content="do you have 1 minute for yourself?" />
+  <meta name="twitter:image" content="https://sheglo.app/og-image.png" />
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --hot-pink: #E03E79;
-      --coral-orange: #F4845F;
-      --deep-plum: #6B2D5B;
-      --golden-yellow: #F2C94C;
-      --soft-lavender: #D5A6E6;
-      --warm-white: #FFF8F5;
-      --card-white: #FFFFFF;
-      --text-primary: #3C1E37;
-      --text-secondary: rgba(60, 30, 55, 0.6);
-      --gradient-sunset: linear-gradient(180deg, #F4845F 0%, #E03E79 50%, #6B2D5B 100%);
-      --gradient-cta: linear-gradient(90deg, #F06482, #E03E79);
-      --card-shadow: 0 4px 12px rgba(107, 45, 91, 0.08);
+      /* SheGlo palette */
+      --coral:        #F4845F;
+      --hot-pink:     #E03E79;
+      --hot-pink-2:   #F06482;
+      --deep-plum:    #6B2D5B;
+      --golden:       #F2C94C;
+      --lavender:     #D5A6E6;
+      --warm-white:   #FFF8F5;
+      --dark-text:    #3C1E37;
+      --muted-text:   #8C6F85;
+      --page-bg:      #FFFFFF;
     }
 
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    html { background: var(--warm-white); }
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--warm-white);
-      color: var(--text-primary);
-      overflow-x: hidden;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.6;
-      text-transform: lowercase;
+      min-height: 100vh;
+      background: var(--page-bg);
+      color: var(--dark-text);
+      font-family: ui-rounded, -apple-system-rounded, "SF Pro Rounded",
+                   -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu,
+                   "Nunito", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    h1, h2, h3, h4, h5, h6, button, a, label, span, p, div { text-transform: lowercase; }
-
-    /* header */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 14px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 248, 245, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(107, 45, 91, 0.06);
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #E03E79, #F4845F, #F2C94C, #D5A6E6);
-      background-size: 300% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 4s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    .header-links { display: flex; gap: 20px; align-items: center; }
-    .header-links a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .header-links a:hover { color: var(--hot-pink); }
-
-    .header-cta {
-      padding: 10px 22px;
-      background: var(--gradient-cta);
-      color: white !important;
-      -webkit-text-fill-color: white !important;
-      border-radius: 28px;
-      font-weight: 600;
-      font-size: 14px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 12px rgba(224, 62, 121, 0.25);
-    }
-    .header-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(224, 62, 121, 0.35); }
-
-    /* hero */
-    .hero {
+    /* ---- Layout ---- */
+    .page {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
-      background: var(--gradient-sunset);
+      padding: 2rem 1.25rem 6rem;
       position: relative;
-      overflow: hidden;
+      background: var(--page-bg);
     }
 
-    @keyframes heroPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.01); }
+    @media (min-width: 1024px) {
+      .page {
+        flex-direction: row;
+        padding: 2rem 2rem 6rem;
+      }
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-      animation: heroPulse 6s ease-in-out infinite;
+    .copy {
+      width: 100%;
+      max-width: 720px;
     }
 
-    .hero-badge {
-      display: inline-block;
-      padding: 8px 20px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 50px;
-      font-size: 14px;
+    @media (min-width: 1024px) {
+      .copy { margin-right: 4rem; }
+    }
+
+    /* ---- Headline ---- */
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2.75rem, 7vw, 6rem);
       font-weight: 600;
-      color: white;
-      margin-bottom: 24px;
-      backdrop-filter: blur(10px);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: #000;
     }
+    @media (min-width: 640px) { h1 { margin-bottom: 0.75rem; } }
 
-    .hero h1 {
-      font-size: 32px;
+    h1 .accent {
       font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 16px;
-      color: white;
+      background: linear-gradient(92deg, var(--coral) 0%, var(--hot-pink) 55%, var(--deep-plum) 120%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .hero h1 .accent { color: var(--golden-yellow); }
-
-    .hero p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.88);
-      margin: 0 auto 32px;
+    .tagline {
+      margin: 0 0 3rem;
+      font-size: clamp(1.125rem, 2.2vw, 1.875rem);
+      line-height: 1.35;
+      color: #6B6B78;
       font-weight: 400;
     }
+    @media (min-width: 640px) { .tagline { margin-bottom: 3.5rem; } }
 
-    .hero-cta {
+    .tagline .accent {
+      font-weight: 600;
+      background: linear-gradient(92deg, var(--coral), var(--hot-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ---- App Store CTA ---- */
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .app-badge {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 0 36px;
-      height: 56px;
-      background: white;
-      color: var(--hot-pink);
-      border: none;
-      border-radius: 28px;
-      font-size: 18px;
-      font-weight: 700;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      background: #000;
+      color: #fff;
+      border-radius: 14px;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      text-transform: lowercase;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      min-width: 220px;
+      line-height: 1;
     }
-    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
-    .hero-cta img { height: 22px; }
+    .app-badge:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    .hero-sub {
-      margin-top: 14px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      font-weight: 400;
-    }
-
-    /* social proof strip */
-    .social-strip {
-      padding: 28px 24px;
-      text-align: center;
-      background: var(--warm-white);
-      border-bottom: 1px solid rgba(107,45,91,0.05);
-    }
-    .social-strip-inner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-      flex-wrap: wrap;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .social-stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-    }
-    .social-stat .num {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--hot-pink);
-    }
-    .social-stat .label {
-      font-size: 13px;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-    .social-stars { color: var(--hot-pink); font-size: 18px; letter-spacing: 2px; }
-
-    /* how it works */
-    .how-section {
-      padding: 80px 24px;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--hot-pink);
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 30px;
-      font-weight: 700;
-      margin-bottom: 40px;
-      color: var(--text-primary);
-    }
-
-    .glow-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .glow-step {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 24px;
-      background: var(--card-white);
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
-      transition: transform 0.3s ease;
-    }
-    .glow-step:hover { transform: translateY(-2px); }
-
-    .glow-step .emoji {
-      font-size: 32px;
+    .app-badge svg {
+      width: 28px;
+      height: 28px;
       flex-shrink: 0;
-      width: 48px;
-      text-align: center;
+      fill: #fff;
     }
 
-    .glow-step h3 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text-primary);
+    .app-badge .b-small {
+      display: block;
+      font-size: 0.7rem;
+      opacity: 0.85;
+      letter-spacing: 0.02em;
       margin-bottom: 2px;
     }
-    .glow-step p {
-      font-size: 15px;
-      color: var(--text-secondary);
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
-    .step-time {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-    .step-time strong { color: var(--hot-pink); font-weight: 700; }
-
-    /* features strip */
-    .features-strip {
-      padding: 60px 24px;
-      background: var(--warm-white);
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .feature-pill {
-      text-align: center;
-      padding: 20px 12px;
-      background: var(--card-white);
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
-    }
-    .feature-pill .emoji { font-size: 28px; margin-bottom: 8px; }
-    .feature-pill .name {
-      font-size: 14px;
+    .app-badge .b-big {
+      display: block;
+      font-size: 1.25rem;
       font-weight: 600;
-      color: var(--text-primary);
+      letter-spacing: 0.005em;
     }
 
-    /* reviews */
-    .reviews-section {
-      padding: 60px 24px;
-      max-width: 800px;
-      margin: 0 auto;
+    @media (min-width: 640px) { .app-badge { min-width: 250px; } }
+
+    /* ---- Right-side hero visual (empty container for demo video) ---- */
+    .hero-visual {
+      width: 100%;
+      max-width: 350px;
+      aspect-ratio: 9 / 19.5;
+      margin-top: 2.5rem;
+      border-radius: 2rem;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(120% 80% at 20% 0%, rgba(245,198,162,0.75), transparent 60%),
+        radial-gradient(110% 90% at 90% 20%, rgba(213,166,230,0.55), transparent 55%),
+        linear-gradient(160deg, var(--coral) 0%, var(--hot-pink) 55%, var(--deep-plum) 100%);
+      box-shadow:
+        0 30px 80px -20px rgba(224, 62, 121, 0.35),
+        0 10px 30px -10px rgba(107, 45, 91, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+    @media (min-width: 1024px) {
+      .hero-visual { width: 350px; margin-top: 0; }
     }
 
-    .review-card {
-      padding: 24px;
-      background: var(--card-white);
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
+    /* Subtle shimmer so the empty frame feels alive until a video is dropped in */
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(255, 248, 245, 0.15) 40deg,
+        transparent 80deg,
+        transparent 360deg
+      );
+      animation: spin 14s linear infinite;
+      pointer-events: none;
     }
-    .review-stars { color: var(--hot-pink); font-size: 16px; margin-bottom: 10px; letter-spacing: 1px; }
-    .review-card .quote {
-      font-size: 16px;
-      color: var(--text-primary);
-      line-height: 1.5;
-      margin-bottom: 10px;
-      font-style: italic;
-    }
-    .review-card .author {
-      font-size: 13px;
-      color: var(--text-secondary);
-      font-weight: 600;
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
-    /* final cta */
-    .final-cta {
-      padding: 80px 24px;
-      text-align: center;
-      background: var(--gradient-sunset);
+    /* Video (if/when Matt drops one in) */
+    .hero-visual video,
+    .hero-visual img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .final-cta-inner {
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    .final-cta h2 {
-      font-size: 30px;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 12px;
-    }
-    .final-cta p {
-      font-size: 18px;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 32px;
-    }
-    .final-cta .hero-cta { margin-bottom: 12px; }
-    .final-cta .hero-sub { color: rgba(255,255,255,0.5); }
 
-    /* footer */
+    /* ---- Footer ---- */
     footer {
-      padding: 32px 24px;
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
       text-align: center;
-      border-top: 1px solid rgba(107,45,91,0.06);
-      background: var(--warm-white);
+      font-size: 0.875rem;
+      color: var(--muted-text);
     }
-    .footer-logo {
-      font-size: 1.2rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #E03E79, #F4845F, #F2C94C, #D5A6E6);
-      background-size: 300% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 4s ease-in-out infinite;
-      margin-bottom: 10px;
+    footer a {
+      color: inherit;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      transition: color 0.15s ease;
     }
-    .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; }
-    .footer-links a { text-decoration: none; color: var(--text-secondary); font-size: 13px; font-weight: 500; transition: color 0.3s; }
-    .footer-links a:hover { color: var(--hot-pink); }
-    .footer-copy { font-size: 13px; color: var(--text-secondary); }
-
-    /* animations */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* responsive */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 27px; }
-      .hero { padding: 100px 24px 60px; }
-      .social-strip-inner { gap: 20px; }
-      .social-stat .num { font-size: 22px; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .reviews-grid { grid-template-columns: 1fr; }
-    }
-
-    /* apple button svg style */
-    .apple-icon { height: 20px; margin-right: 2px; vertical-align: middle; position: relative; top: -1px; }
+    footer a:hover { color: var(--dark-text); }
+    footer .sep { opacity: 0.55; }
+    footer .copyright { display: block; margin-top: 0.35rem; font-size: 0.8rem; }
   </style>
 </head>
 <body>
+  <main class="page">
+    <div class="copy">
+      <h1>
+        your phone is taking you<br />
+        <span class="accent">away from yourself</span>
+      </h1>
 
-  <header>
-    <div class="logo">sheglo</div>
-    <div class="header-links">
-      <a href="privacy.html">privacy</a>
-      <a href="terms.html">terms</a>
-      <a href="#" class="header-cta">🌸 download free</a>
-    </div>
-  </header>
+      <p class="tagline">
+        block apps until you <span class="accent">glow</span>
+      </p>
 
-  <!-- hero -->
-  <section class="hero">
-    <div class="hero-content fade-in">
-      <div class="hero-badge">✨ 1 minute. every morning. before you scroll.</div>
-      <h1>replace your doom-scroll with a <span class="accent">daily self-love ritual</span></h1>
-      <p>sheglo is the ios app that helps women start every day with a mood check-in, a confidence boost, and a personalized affirmation — in under 60 seconds.</p>
-      <a href="#" class="hero-cta"><svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> download on the app store</a>
-      <div class="hero-sub">free to download · ios 17+</div>
-    </div>
-  </section>
-
-  <!-- social proof strip -->
-  <section class="social-strip fade-in">
-    <div class="social-strip-inner">
-      <div class="social-stat">
-        <div class="social-stars">★★★★★</div>
-        <div class="label">4.9 on the app store</div>
-      </div>
-      <div class="social-stat">
-        <div class="num">10k+</div>
-        <div class="label">daily glows completed</div>
-      </div>
-      <div class="social-stat">
-        <div class="num">60s</div>
-        <div class="label">is all it takes</div>
+      <div class="cta-row">
+        <a
+          class="app-badge"
+          href="https://apps.apple.com/us/app/sheglo/id6760979651"
+          aria-label="Download sheglo on the App Store"
+        >
+          <!-- Apple logo -->
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M17.543 12.673c-.026-2.62 2.14-3.877 2.238-3.938-1.221-1.786-3.12-2.03-3.795-2.058-1.616-.164-3.154.952-3.974.952-.82 0-2.088-.928-3.436-.902-1.768.026-3.4 1.027-4.31 2.608-1.838 3.186-.47 7.904 1.32 10.494.874 1.266 1.914 2.688 3.28 2.638 1.318-.053 1.816-.852 3.407-.852 1.59 0 2.044.852 3.438.824 1.42-.026 2.319-1.292 3.183-2.566 1.004-1.473 1.418-2.9 1.444-2.974-.03-.014-2.77-1.064-2.795-4.226zM14.96 5.08c.728-.884 1.219-2.112 1.085-3.336-1.049.043-2.318.698-3.07 1.58-.675.783-1.266 2.034-1.108 3.232 1.17.09 2.365-.593 3.093-1.476z"/>
+          </svg>
+          <span>
+            <span class="b-small">Download on the</span>
+            <span class="b-big">App Store</span>
+          </span>
+        </a>
       </div>
     </div>
-  </section>
 
-  <!-- how it works -->
-  <section class="how-section">
-    <div class="section-label fade-in">🌟 your daily glow</div>
-    <h2 class="section-title fade-in">3 steps. 1 minute. every morning.</h2>
-    <div class="glow-steps">
-      <div class="glow-step fade-in">
-        <div class="emoji">😊</div>
-        <div>
-          <h3>mood check-in</h3>
-          <p>slide from 😢 to 🤩 — how are you really feeling today?</p>
-        </div>
-      </div>
-      <div class="glow-step fade-in">
-        <div class="emoji">🔥</div>
-        <div>
-          <h3>confidence boost</h3>
-          <p>rate your energy from 🥀 drained to 🔥 unstoppable</p>
-        </div>
-      </div>
-      <div class="glow-step fade-in">
-        <div class="emoji">🌸</div>
-        <div>
-          <h3>read your affirmation</h3>
-          <p>a personalized affirmation from 90+ cards matched to your style. say it aloud. feel it.</p>
-        </div>
-      </div>
+    <div class="hero-visual" aria-hidden="true">
+      <!-- demo video will be dropped in here, e.g.:
+      <video autoplay muted loop playsinline src="/demo.mp4"></video>
+      -->
     </div>
-    <div class="step-time fade-in">✨ that's it. <strong>your apps unlock</strong> and your day begins with love.</div>
-  </section>
 
-  <!-- feature pills -->
-  <section class="features-strip">
-    <div class="section-label fade-in">💖 what's inside</div>
-    <h2 class="section-title fade-in">more than just affirmations</h2>
-    <div class="features-grid">
-      <div class="feature-pill fade-in">
-        <div class="emoji">🔥</div>
-        <div class="name">daily streaks</div>
-      </div>
-      <div class="feature-pill fade-in">
-        <div class="emoji">📓</div>
-        <div class="name">glow journal</div>
-      </div>
-      <div class="feature-pill fade-in">
-        <div class="emoji">📊</div>
-        <div class="name">mood tracking</div>
-      </div>
-      <div class="feature-pill fade-in">
-        <div class="emoji">🔒</div>
-        <div class="name">screen time lock</div>
-      </div>
-      <div class="feature-pill fade-in">
-        <div class="emoji">🎨</div>
-        <div class="name">5 affirmation styles</div>
-      </div>
-      <div class="feature-pill fade-in">
-        <div class="emoji">🎉</div>
-        <div class="name">confetti celebrations</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- reviews -->
-  <section class="reviews-section">
-    <div class="section-label fade-in">💬 real women, real glow-ups</div>
-    <h2 class="section-title fade-in">why they love sheglo</h2>
-    <div class="reviews-grid">
-      <div class="review-card fade-in">
-        <div class="review-stars">★★★★★</div>
-        <p class="quote">"i used to open instagram the second i woke up. now i do my glow first. it's only a minute but it changes my whole morning."</p>
-        <div class="author">— sarah, 24</div>
-      </div>
-      <div class="review-card fade-in">
-        <div class="review-stars">★★★★★</div>
-        <p class="quote">"the screen time lock is genius. i literally can't doom-scroll until i've told myself something kind. my therapist approves."</p>
-        <div class="author">— maya, 28</div>
-      </div>
-      <div class="review-card fade-in">
-        <div class="review-stars">★★★★★</div>
-        <p class="quote">"i'm on a 47-day streak and my mood chart is actually going up. this app is so simple but so powerful."</p>
-        <div class="author">— jess, 22</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- final cta -->
-  <section class="final-cta">
-    <div class="final-cta-inner fade-in">
-      <h2>your morning glow starts now ✨</h2>
-      <p>1 minute of self-love before you scroll. every day. you deserve it.</p>
-      <a href="#" class="hero-cta"><svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> download free on ios</a>
-      <div class="hero-sub">free 3-day trial · then $39.99/year</div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-logo">sheglo</div>
-    <div class="footer-links">
-      <a href="privacy.html">privacy policy</a>
-      <a href="terms.html">terms of service</a>
-    </div>
-    <p class="footer-copy">© 2026 sheglo. all rights reserved.</p>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
-
+    <footer>
+      <a href="/terms.html">Terms of Service</a>
+      <span class="sep">•</span>
+      <a href="/privacy.html">Privacy Policy</a>
+      <span class="sep">•</span>
+      <a href="mailto:info@sheglo.app">Contact Us</a>
+      <span class="copyright">© 2026 SheGlo. All rights reserved.</span>
+    </footer>
+  </main>
 </body>
 </html>
