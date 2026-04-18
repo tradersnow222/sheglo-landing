@@ -124,44 +124,19 @@
     }
 
     .app-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 1.5rem 2.5rem;
-      background: #000;
-      color: #fff;
-      border-radius: 22px;
-      text-decoration: none;
+      display: inline-block;
       transition: transform 0.15s ease, opacity 0.15s ease;
-      min-width: 440px;
-      line-height: 1;
     }
     .app-badge:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    .app-badge svg {
-      width: 56px;
-      height: 56px;
-      flex-shrink: 0;
-      fill: #fff;
-    }
-
-    .app-badge .b-small {
+    .app-badge img {
       display: block;
-      font-size: 1.4rem;
-      color: #fff;
-      opacity: 1;
-      letter-spacing: 0.02em;
-      margin-bottom: 4px;
+      width: 180px;
+      height: auto;
+      object-fit: contain;
     }
-    .app-badge .b-big {
-      display: block;
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.005em;
-    }
-
-    @media (min-width: 640px) { .app-badge { min-width: 500px; } }
+    @media (min-width: 640px) { .app-badge img { width: 220px; } }
+    @media (min-width: 768px) { .app-badge img { width: 250px; } }
 
     /* ---- Right-side hero visual (empty container for demo video) ---- */
     .hero-visual {
@@ -243,8 +218,8 @@
   <main class="page">
     <div class="copy">
       <h1>
-        your phone is taking you<br />
-        <span class="accent">away from yourself</span>
+        your phone is<br />
+        <span class="accent">killing your self-confidence</span>
       </h1>
 
       <p class="tagline">
@@ -257,14 +232,10 @@
           href="https://apps.apple.com/us/app/sheglo/id6760979651"
           aria-label="Download sheglo on the App Store"
         >
-          <!-- Apple logo -->
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M17.543 12.673c-.026-2.62 2.14-3.877 2.238-3.938-1.221-1.786-3.12-2.03-3.795-2.058-1.616-.164-3.154.952-3.974.952-.82 0-2.088-.928-3.436-.902-1.768.026-3.4 1.027-4.31 2.608-1.838 3.186-.47 7.904 1.32 10.494.874 1.266 1.914 2.688 3.28 2.638 1.318-.053 1.816-.852 3.407-.852 1.59 0 2.044.852 3.438.824 1.42-.026 2.319-1.292 3.183-2.566 1.004-1.473 1.418-2.9 1.444-2.974-.03-.014-2.77-1.064-2.795-4.226zM14.96 5.08c.728-.884 1.219-2.112 1.085-3.336-1.049.043-2.318.698-3.07 1.58-.675.783-1.266 2.034-1.108 3.232 1.17.09 2.365-.593 3.093-1.476z"/>
-          </svg>
-          <span>
-            <span class="b-small">Download on the</span>
-            <span class="b-big">App Store</span>
-          </span>
+          <img
+            src="https://toolbox.marketingtools.apple.com/api/badges/download-on-the-app-store/black/en-us"
+            alt="Download on the App Store"
+          />
         </a>
       </div>
     </div>
