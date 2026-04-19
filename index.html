@@ -155,7 +155,10 @@
       .hero-visual { width: 350px; margin-top: 0; }
     }
 
-    /* Video (sits flush on the page, no container chrome) */
+    /* Video (sits flush on the page, no container chrome).
+       Soft mask fades all four edges into the page bg so Kite's 3D-scene
+       floor reflection + cool-tinted side edges don't show as a rectangle
+       around light-colored app frames. */
     .hero-visual video,
     .hero-visual img {
       position: relative;
@@ -164,6 +167,14 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0, #000 3%, #000 80%, transparent 100%),
+        linear-gradient(to right,  transparent 0, #000 3%, #000 97%, transparent 100%);
+      -webkit-mask-composite: source-in;
+              mask-image:
+        linear-gradient(to bottom, transparent 0, #000 3%, #000 80%, transparent 100%),
+        linear-gradient(to right,  transparent 0, #000 3%, #000 97%, transparent 100%);
+              mask-composite: intersect;
     }
 
     /* ---- Footer ---- */
