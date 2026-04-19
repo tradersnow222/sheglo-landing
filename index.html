@@ -188,25 +188,29 @@
     footer .sep { opacity: 0.55; }
     footer .copyright { display: block; margin-top: 0.35rem; font-size: 0.8rem; }
 
-    /* ---- Brand (top-left logo + wordmark) ---- */
+    /* ---- Brand (logo + wordmark) ----
+       Mobile: flows in document, pinned to left, sits above headline.
+       Desktop: absolutely positioned in the top-left corner. */
     .brand {
-      position: absolute;
-      top: 1.25rem;
-      left: 1.25rem;
       display: flex;
       align-items: center;
       gap: 0.6rem;
       text-decoration: none;
       z-index: 10;
+      align-self: flex-start;
+      margin-bottom: 2rem;
       transition: transform 0.15s ease, opacity 0.15s ease;
     }
     .brand:hover { opacity: 0.92; transform: translateY(-1px); }
 
-    @media (min-width: 640px) {
-      .brand { top: 1.75rem; left: 1.75rem; }
-    }
     @media (min-width: 1024px) {
-      .brand { top: 2rem; left: 2.25rem; gap: 0.7rem; }
+      .brand {
+        position: absolute;
+        top: 2rem;
+        left: 2.25rem;
+        margin-bottom: 0;
+        gap: 0.7rem;
+      }
     }
 
     .brand-logo {
