@@ -40,7 +40,7 @@
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
 
-    html { background: var(--warm-white); }
+    html { background: var(--page-bg); }
     body {
       min-height: 100vh;
       background: var(--page-bg);
@@ -138,22 +138,14 @@
     @media (min-width: 640px) { .app-badge img { width: 220px; } }
     @media (min-width: 768px) { .app-badge img { width: 250px; } }
 
-    /* ---- Right-side hero visual (empty container for demo video) ---- */
+    /* ---- Right-side hero visual (seamless — video floor matches page bg) ---- */
     .hero-visual {
       width: 100%;
       max-width: 350px;
       aspect-ratio: 9 / 19.5;
       margin-top: 2.5rem;
-      border-radius: 2rem;
-      overflow: hidden;
       position: relative;
-      background:
-        radial-gradient(120% 80% at 20% 0%, rgba(245,198,162,0.75), transparent 60%),
-        radial-gradient(110% 90% at 90% 20%, rgba(213,166,230,0.55), transparent 55%),
-        linear-gradient(160deg, var(--coral) 0%, var(--hot-pink) 55%, var(--deep-plum) 100%);
-      box-shadow:
-        0 30px 80px -20px rgba(224, 62, 121, 0.35),
-        0 10px 30px -10px rgba(107, 45, 91, 0.25);
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -163,26 +155,7 @@
       .hero-visual { width: 350px; margin-top: 0; }
     }
 
-    /* Subtle shimmer so the empty frame feels alive until a video is dropped in */
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      inset: -20%;
-      background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        rgba(255, 248, 245, 0.15) 40deg,
-        transparent 80deg,
-        transparent 360deg
-      );
-      animation: spin 14s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Video (if/when Matt drops one in) */
+    /* Video (sits flush on the page, no container chrome) */
     .hero-visual video,
     .hero-visual img {
       position: relative;
