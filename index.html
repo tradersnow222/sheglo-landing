@@ -34,7 +34,7 @@
       --warm-white:   #FFF8F5;
       --dark-text:    #3C1E37;
       --muted-text:   #8C6F85;
-      --page-bg:      #F7F8FD;
+      --page-bg:      #FDF8F5;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -156,9 +156,8 @@
     }
 
     /* Video (sits flush on the page, no container chrome).
-       Soft mask fades all four edges into the page bg so Kite's 3D-scene
-       floor reflection + cool-tinted side edges don't show as a rectangle
-       around light-colored app frames. */
+       Kite scene bg is #FDF8F5 (matches --page-bg) so the phone
+       blends seamlessly with no masks required. */
     .hero-visual video,
     .hero-visual img {
       position: relative;
@@ -167,14 +166,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      -webkit-mask-image:
-        linear-gradient(to bottom, transparent 0, #000 3%, #000 80%, transparent 100%),
-        linear-gradient(to right,  transparent 0, #000 3%, #000 97%, transparent 100%);
-      -webkit-mask-composite: source-in;
-              mask-image:
-        linear-gradient(to bottom, transparent 0, #000 3%, #000 80%, transparent 100%),
-        linear-gradient(to right,  transparent 0, #000 3%, #000 97%, transparent 100%);
-              mask-composite: intersect;
     }
 
     /* ---- Footer ---- */
