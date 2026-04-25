@@ -22,6 +22,9 @@
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+  <!-- Cloudflare Web Analytics — privacy-first, cookieless, free unlimited -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e4c965850f2841ce98a18861f59e9d3a"}'></script>
+
   <style>
     :root {
       /* SheGlo palette */
@@ -259,7 +262,7 @@
       <div class="cta-row">
         <a
           class="app-badge"
-          href="https://apps.apple.com/us/app/sheglo/id6760979651"
+          href="/go/"
           aria-label="Download SheGlo on the App Store"
         >
           <img
@@ -291,5 +294,23 @@
       <span class="copyright">© 2026 SheGlo. All rights reserved.</span>
     </footer>
   </main>
+
+  <script>
+    // Carry UTM params from the landing-page URL onto the App Store CTA so the
+    // /go/ click is attributed to the right source in Cloudflare Web Analytics.
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var keep = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+      var carried = keep
+        .filter(function(k) { return params.has(k); })
+        .map(function(k) { return k + '=' + encodeURIComponent(params.get(k)); })
+        .join('&');
+      if (carried) {
+        document.querySelectorAll('a.app-badge').forEach(function(a) {
+          a.href = '/go/?' + carried;
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
