@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Opening SheGlo on the App Store…</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Cloudflare Web Analytics — every visit to /go/ is one App Store click -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e4c965850f2841ce98a18861f59e9d3a"}'></script>
+
+  <!-- Instant fallback redirect if JS is disabled -->
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=https://apps.apple.com/us/app/sheglo/id6760979651" />
+  </noscript>
+
+  <style>
+    html, body { margin: 0; padding: 0; min-height: 100vh; }
+    body {
+      display: flex; align-items: center; justify-content: center;
+      font-family: ui-rounded, -apple-system, "SF Pro Rounded", system-ui, sans-serif;
+      background: #FDF8F5;
+      color: #3C1E37;
+    }
+    .wrap { text-align: center; padding: 2rem; max-width: 320px; }
+    .spinner {
+      width: 36px; height: 36px; margin: 0 auto 1.25rem;
+      border: 3px solid rgba(224, 62, 121, 0.18);
+      border-top-color: #E03E79;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    p { margin: 0; font-size: 16px; color: #8C6F85; line-height: 1.4; }
+    .fallback { display: none; margin-top: 1rem; font-size: 14px; }
+    .fallback.show { display: block; }
+    .fallback a { color: #E03E79; font-weight: 600; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="spinner" aria-hidden="true"></div>
+    <p>Opening the App Store…</p>
+    <p class="fallback" id="fallback">
+      Didn't open? <a href="https://apps.apple.com/us/app/sheglo/id6760979651">Tap here.</a>
+    </p>
+  </div>
+
+  <script>
+    (function() {
+      // The /go/ pageview itself is the click signal; CWA records it before redirect.
+      // We strip our internal utm_* before forwarding so Apple's URL stays clean.
+      var APP_STORE_URL = 'https://apps.apple.com/us/app/sheglo/id6760979651';
+
+      // Show fallback link after 1.5s if redirect hasn't fired (rare but possible on locked-down browsers).
+      setTimeout(function() {
+        document.getElementById('fallback').classList.add('show');
+      }, 1500);
+
+      // Use replace() so /go/ doesn't sit in browser history.
+      window.location.replace(APP_STORE_URL);
+    })();
+  </script>
+</body>
+</html>
