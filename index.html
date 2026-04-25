@@ -257,11 +257,25 @@
         if (v) { captured[k]=v; try{localStorage.setItem('sg_'+k,v);}catch(e){} }
         else { try{var s=localStorage.getItem('sg_'+k); if(s)captured[k]=s;}catch(e){} }
       });
-      mixpanel.register(captured);
-      var distinctId = mixpanel.get_distinct_id();
-      try{localStorage.setItem('sg_distinct_id',distinctId);}catch(e){}
-      mixpanel.track('Landing Page View', Object.assign({page:'landing',referrer:document.referrer||null,landing_path:window.location.pathname}, captured));
-      function attach(){
+      function whenReady(cb) {
+        if (window.mixpanel && typeof window.mixpanel.get_distinct_id === 'function') return cb();
+        var tries = 0;
+        var iv = setInterval(function(){
+          tries++;
+          if (window.mixpanel && typeof window.mixpanel.get_distinct_id === 'function') { clearInterval(iv); cb(); }
+          else if (tries > 100) { clearInterval(iv); }
+        }, 50);
+      }
+
+      whenReady(function(){
+        mixpanel.register(captured);
+        var distinctId = mixpanel.get_distinct_id();
+        try{localStorage.setItem('sg_distinct_id', distinctId);}catch(e){}
+        mixpanel.track('Landing Page View', Object.assign({page:'landing',referrer:document.referrer||null,landing_path:window.location.pathname}, captured));
+        attachLinks(distinctId);
+      });
+
+      function attachLinks(distinctId){
         // Match both /go/ redirect link and direct App Store link
         var sel = 'a[href^="/go"], a[href*="apps.apple.com"]';
         document.querySelectorAll(sel).forEach(function(a){
@@ -282,11 +296,6 @@
             mixpanel.track('App Store Click', Object.assign({destination:'app_store', cta_href:a.getAttribute('href')}, captured));
           }, { passive: true });
         });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', attach);
-      } else {
-        attach();
       }
     })();
   </script>
