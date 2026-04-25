@@ -22,7 +22,7 @@
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <!-- Cloudflare Web Analytics â privacy-first, cookieless, free unlimited -->
+  <!-- Cloudflare Web Analytics — privacy-first, cookieless, free unlimited -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e4c965850f2841ce98a18861f59e9d3a"}'></script>
 
   <style>
@@ -141,7 +141,7 @@
     @media (min-width: 640px) { .app-badge img { width: 220px; } }
     @media (min-width: 768px) { .app-badge img { width: 250px; } }
 
-    /* ---- Right-side hero visual (seamless â video floor matches page bg) ---- */
+    /* ---- Right-side hero visual (seamless — video floor matches page bg) ---- */
     .hero-visual {
       width: 100%;
       max-width: 350px;
@@ -241,45 +241,6 @@
       .brand-name { font-size: 1.85rem; }
     }
   </style>
-
-  <!-- Mixpanel -->
-  <script type="text/javascript">
-    (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
-
-    mixpanel.init('d630f727c94bfaa952767a0803a3dd79', {
-      debug: false,
-      track_pageview: false,
-      persistence: 'localStorage',
-      ignore_dnt: true
-    });
-
-    (function(){
-      var params = new URLSearchParams(window.location.search);
-      var trackedKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','ttclid','tt_medium','fbclid','gclid'];
-      var captured = {};
-      trackedKeys.forEach(function(k){
-        var v = params.get(k);
-        if (v) { captured[k]=v; try{localStorage.setItem('sg_'+k,v);}catch(e){} }
-        else { try{var s=localStorage.getItem('sg_'+k); if(s)captured[k]=s;}catch(e){} }
-      });
-      mixpanel.register(captured);
-      var distinctId = mixpanel.get_distinct_id();
-      try{localStorage.setItem('sg_distinct_id',distinctId);}catch(e){}
-      mixpanel.track('Landing Page View', Object.assign({page:'landing',referrer:document.referrer||null,landing_path:window.location.pathname}, captured));
-      function attach(){
-        document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(a){
-          try{var url=new URL(a.href);url.searchParams.set('sg_did',distinctId);Object.keys(captured).forEach(function(k){if(captured[k])url.searchParams.set(k,captured[k]);});a.href=url.toString();}catch(e){}
-          a.addEventListener('click',function(){
-            var payload=JSON.stringify(Object.assign({sg_did:distinctId,ts:Date.now()},captured));
-            try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('sheglo_attr:'+payload).catch(function(){});}}catch(e){}
-            mixpanel.track('App Store Click', Object.assign({destination:'app_store'},captured));
-          },{passive:true});
-        });
-      }
-      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',attach);}else{attach();}
-    })();
-  </script>
-  <!-- /Mixpanel -->
 </head>
 <body>
   <main class="page">
@@ -326,11 +287,11 @@
 
     <footer>
       <a href="/terms.html">Terms of Service</a>
-      <span class="sep">â¢</span>
+      <span class="sep">•</span>
       <a href="/privacy.html">Privacy Policy</a>
-      <span class="sep">â¢</span>
+      <span class="sep">•</span>
       <a href="mailto:info@sheglo.app">Contact Us</a>
-      <span class="copyright">Â© 2026 SheGlo. All rights reserved.</span>
+      <span class="copyright">© 2026 SheGlo. All rights reserved.</span>
     </footer>
   </main>
 
